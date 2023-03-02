@@ -2,7 +2,10 @@
     "use strict";
 
      $(document).on('click', '#add-task', function() {
-        $('#task-table').removeClass('d-none');
+        let task_table = $('#task-table');
+        task_table.removeClass('d-none');
+        $('#add-task-alert').addClass('d-none');
+
         let task_form = `<tr>
             <td style="width: 45%">
                 <input type="text" name="task_name[]" class="form-control" placeholder="Task Name" required>
@@ -16,7 +19,7 @@
             </button>
             </td>
         </tr>`;
-        $('#task-table').find('tbody').append(task_form);
+        task_table.find('tbody').append(task_form);
     });
 
     $(document).on('click', '.remove-task', function(){

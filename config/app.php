@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => 'TO DO LIST',
+    'name' => 'TO-DO LIST',
 
     /*
     |--------------------------------------------------------------------------
@@ -177,7 +177,6 @@ return [
         /*
          * Custom Service Providers...
          */
-        App\Providers\CommonTableFields::class,
 
     ],
 

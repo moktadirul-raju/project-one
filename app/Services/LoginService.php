@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -13,9 +14,9 @@ class LoginService
     /**
      * Handle user login request
      * @param $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
-    public function userLogin($request): \Illuminate\Http\RedirectResponse
+    public function userLogin($request): RedirectResponse
     {
         $credentials = [
             'email' => $request->get('email'),
@@ -30,7 +31,12 @@ class LoginService
             ->withInput($request->only('email', 'remember'));
     }
 
-    public function logout() {
+    /**
+     * User logout from device
+     * @return RedirectResponse
+     */
+    public function logout()
+    {
         Auth::logout();
         Session::flush();
         return redirect()->route('home');

@@ -24,7 +24,7 @@
                       </div>
                    </div>
 
-                    <div class="form-group mt-2">
+                    <div class="form-group mt-2 " id="add-task-alert">
                         <label class="alert alert-info alert-padding">Pleas click on <b>Add Task</b> button to add new task</label>
                     </div>
 

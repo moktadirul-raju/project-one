@@ -16,16 +16,14 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         User::insert([
-            'name' => 'User One',
-            'email' => 'userone@mail.com',
-            'mobile' => '01236598874',
+            'name' => 'Moktadirul Raju',
+            'email' => 'moktadirulraju@gmail.com',
             'password' => Hash::make('123456')
         ]);
 
         User::insert([
-            'name' => 'User Two',
-            'email' => 'usertwo@mail.com',
-            'mobile' => '01236598875',
+            'name' => 'Md Raju',
+            'email' => 'raju@gmail.com',
             'password' => Hash::make('123456')
         ]);
     }

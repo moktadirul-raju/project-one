@@ -1,12 +1,12 @@
 @extends('layouts.app')
-@section('title','To Do List')
+@section('title','To-Do List')
 
 @section('content')
 <div class="row justify-content-center mt-5">
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                To Do Lists
+                To-Do Lists
                 <a href="{{ route('to-do-list.create') }}" class="btn btn-primary btn-sm float-end">
                     <i class="bi bi-plus-circle"></i> Add New
                 </a>
@@ -16,7 +16,8 @@
                     <p class="alert alert-{{ Session::get('type') }} mt-1 alert-padding">{{ Session::get('message') }}</p>
                 @endif
                 @if(count($to_do_lists))
-                    <table class="table table-striped table-responsive table-bordered">
+                    <div class="table-responsive">
+                    <table class="table table-striped  table-bordered">
                         <thead>
                         <tr>
                           <th width="5%">SN</th>
@@ -36,7 +37,7 @@
                                       View tasks
                                   </a>
                                   <a href="{{ route('manage-tasks',encryptDecrypt($to_do->id,'encrypt')) }}" class="btn btn-sm btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add/Edit/Delete Task">
-                                      Manage Tasks
+                                      Quick manage task
                                   </a>
                               </td>
                               <td>
@@ -54,6 +55,7 @@
                         @endforeach
                       </tbody>
                     </table>
+                        </div>
                     <nav aria-label="Page navigation example">
                       {{ $to_do_lists->links() }}
                     </nav>

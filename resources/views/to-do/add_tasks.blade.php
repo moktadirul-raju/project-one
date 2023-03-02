@@ -5,7 +5,7 @@
     <div class="col-md-10">
         <div class="card">
             <div class="card-header">
-                Add tasks on - <strong>{{ $to_do->name ?? '' }}</strong>
+                Add new tasks on - <strong>{{ $to_do->name ?? '' }}</strong>
                 <a href="{{ route('to-do-tasks',encryptDecrypt($to_do->id,'encrypt')) }}" class="btn btn-primary btn-sm float-end">
                     <i class="bi bi-arrow-left"></i> Back
                 </a>

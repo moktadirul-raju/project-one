@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Services;
-
 use App\Models\Task;
 use App\Models\ToDoList;
 use Illuminate\Contracts\Foundation\Application;

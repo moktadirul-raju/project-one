@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\RegistrationRequest;
 use App\Http\Requests\UpdateProfileRequest;
 use App\Services\RegistrationService;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class RegisterController extends Controller
 {
@@ -17,28 +21,37 @@ class RegisterController extends Controller
     /**
      * Define constructor function
      */
-    public function __construct(RegistrationService $registrationService) {
+    public function __construct(RegistrationService $registrationService)
+    {
         $this->registrationService = $registrationService;
     }
 
     /**
      * Handle user registration request
      * @param RegistrationRequest $request
-     * @return mixed
+     * @return RedirectResponse
      */
-    public function userRegister(RegistrationRequest $request) {
+    public function userRegister(RegistrationRequest $request)
+    {
         return $this->registrationService->userRegistration($request);
     }
 
     /**
      * Redirect to change profile form
-     * @return mixed
+     * @return Application|Factory|View
      */
-    public function changeProfileForm() {
+    public function changeProfileForm()
+    {
         return $this->registrationService->changeProfileForm();
     }
 
-    public function updateProfile(UpdateProfileRequest $request) {
+    /**
+     * Profile update request handle
+     * @param UpdateProfileRequest $request
+     * @return RedirectResponse
+     */
+    public function updateProfile(UpdateProfileRequest $request): RedirectResponse
+    {
         return $this->registrationService->updateProfile($request);
     }
 }

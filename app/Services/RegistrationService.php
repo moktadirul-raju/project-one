@@ -3,6 +3,10 @@
 namespace App\Services;
 
 use App\Models\User;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -14,14 +18,13 @@ class RegistrationService
     /**
      * Handle user registration request
      * @param $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
-    public function userRegistration($request): \Illuminate\Http\RedirectResponse
+    public function userRegistration($request)
     {
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->mobile = $request->mobile;
         $user->password = Hash::make($request->password);
         if($user->save()) {
             Auth::loginUsingId($user->id);
@@ -34,21 +37,27 @@ class RegistrationService
 
     /**
      * Redirect to change profile form
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
-    public function changeProfileForm() {
+    public function changeProfileForm()
+    {
         $user = Auth::user();
         return view('auth.change_profile',compact('user'));
     }
 
-    public function updateProfile($request) {
+    /**
+     * Update profile
+     * @param $request
+     * @return RedirectResponse
+     */
+    public function updateProfile($request)
+    {
         $user = Auth::user();
         $user->name = $request->name;
         $user->email = $request->email;
         if(isset($request->password)) {
             $user->password = Hash::make($request->password);
         }
-
         if($user->save()) {
             return redirect()->intended(route('to-do-list.index'));
         } else {

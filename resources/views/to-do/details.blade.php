@@ -13,10 +13,10 @@
             </div>
             <div class="card-body">
                 <h6>To-Do : <strong>{{ $to_do->name ?? '' }}</strong></h6>
-                <h6 class="mt-3"><strong>Tasks</strong></h6>
-                <hr>
+                <h6 class="mt-2"><strong>Tasks:</strong></h6>
+
                 @if(count($to_do->tasks))
-                    <table class="table table-striped table-responsive table-bordered">
+                    <table class="table table-striped table-responsive table-bordered mt-3">
                         <thead>
                         <tr>
                             <th width="5%">SN</th>

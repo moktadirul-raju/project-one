@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use App\Services\LoginService;
+use Illuminate\Http\RedirectResponse;
 
 class LoginController extends Controller
 {
@@ -16,14 +17,15 @@ class LoginController extends Controller
     /**
      * Define constructor function
      */
-    public function __construct(LoginService $loginService) {
+    public function __construct(LoginService $loginService)
+    {
         $this->loginService = $loginService;
     }
 
     /**
      * Handle user login request
      * @param LoginRequest $request
-     * @return mixed
+     * @return RedirectResponse
      */
     public function userLogin(LoginRequest $request) {
         return $this->loginService->userLogin($request);
@@ -31,9 +33,10 @@ class LoginController extends Controller
 
     /**
      * Handle logout request
-     * @return mixed
+     * @return RedirectResponse
      */
-    public function logout() {
+    public function logout()
+    {
         return $this->loginService->logout();
     }
 }
