@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Services\ToDoService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,7 @@ class ToDoListController extends Controller
 
     /**
      * Display a listing of the resource.
-     * @return Application|Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function index()
     {
@@ -34,7 +35,7 @@ class ToDoListController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     * @return Application|Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function create()
     {
@@ -56,7 +57,7 @@ class ToDoListController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return Application|Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function show($id)
     {
@@ -67,7 +68,7 @@ class ToDoListController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return Application|Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function edit($id)
     {
@@ -101,7 +102,7 @@ class ToDoListController extends Controller
     /**
      * To-Do list wise tasks
      * @param $id
-     * @return Application|Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function toDoTasks($id)
     {
@@ -111,7 +112,7 @@ class ToDoListController extends Controller
     /**
      * Redirect to manage task form
      * @param $id
-     * @return Application|Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function manageTask($id)
     {
@@ -132,7 +133,7 @@ class ToDoListController extends Controller
     /**
      * Add new task on to-do
      * @param $id
-     * @return Application|Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function addTask($id)
     {
@@ -153,7 +154,7 @@ class ToDoListController extends Controller
     /**
      * Edit task form
      * @param $id
-     * @return Application|Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function editTask($id)
     {
