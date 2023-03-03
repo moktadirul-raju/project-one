@@ -54,10 +54,7 @@ class ToDoService
             }
             return redirect()
                 ->route('to-do-list.index')
-                ->with([
-                    'type' => 'success',
-                    'message' => 'New To-Do has been added successfully on list'
-                ]);
+                ->with(alertMessage('success','New To-Do has been added successfully on list'));
         } else {
             return redirect()
                 ->back()
@@ -117,10 +114,7 @@ class ToDoService
             }
             return redirect()
                 ->route('to-do-list.index')
-                ->with([
-                    'type' => 'info',
-                    'message' => 'To-Do has been updated successfully'
-                ]);
+                ->with(alertMessage('info','To-Do has been updated successfully'));
         } else {
             return redirect()
                 ->back()
@@ -152,10 +146,7 @@ class ToDoService
         ToDoList::findOrFail(encryptDecrypt($id,'decrypt'))->delete();
         return redirect()
             ->route('to-do-list.index')
-            ->with([
-                'type' => 'danger',
-                'message' => 'To-Do has been deleted successfully from list'
-            ]);
+            ->with(alertMessage('danger','To-Do has been deleted successfully from list'));
     }
 
     /**
@@ -209,10 +200,7 @@ class ToDoService
         }
         return redirect()
             ->route('to-do-tasks',$id)
-            ->with([
-                'type' => 'success',
-                'message' => 'New Tasks has been added successfully on To-Do list'
-            ]);
+            ->with(alertMessage('success','New Tasks has been added successfully on To-Do list'));
     }
 
     /**
@@ -251,10 +239,7 @@ class ToDoService
         if($task->save()) {
             return redirect()
                 ->route('to-do-tasks',encryptDecrypt($task->to_do_list_id,'encrypt'))
-                ->with([
-                    'type' => 'info',
-                    'message' => 'Task has been updated successfully'
-                ]);
+                ->with(alertMessage('info','Task has been updated successfully'));
         } else {
             return redirect()
                 ->back()
@@ -273,9 +258,6 @@ class ToDoService
         $task->delete();
          return redirect()
              ->route('to-do-tasks',encryptDecrypt($task->to_do_list_id,'encrypt'))
-            ->with([
-                'type' => 'danger',
-                'message' => 'Task has been deleted successfully'
-            ]);
+            ->with(alertMessage('danger','Task has been deleted successfully'));
     }
 }

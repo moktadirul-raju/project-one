@@ -31,3 +31,15 @@ if (! function_exists('encryptDecrypt')) {
         return FALSE;	# if function is not used properly
     }
 }
+
+/**
+ * return alert message
+ */
+if(! function_exists('alertMessage')) {
+    function alertMessage($type,$message) {
+        return [
+            'type' => $type ?? 'info',
+            'message' => $message
+        ];
+    }
+}
