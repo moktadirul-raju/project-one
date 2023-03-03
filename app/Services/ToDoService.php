@@ -22,8 +22,14 @@ class ToDoService
     {
         $list = ToDoList::query();
         $list->where('user_id',Auth::id());
+        $list->latest('id');
         $to_do_lists = $list->paginate(10);
         return view('to-do.index',compact('to_do_lists'));
+    }
+
+    public function createToDo()
+    {
+        return view('to-do.create');
     }
 
     /**

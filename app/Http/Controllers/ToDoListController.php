@@ -38,7 +38,7 @@ class ToDoListController extends Controller
      */
     public function create()
     {
-        return view('to-do.create');
+        return $this->toDoService->createToDo();
     }
 
     /**
